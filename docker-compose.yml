@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  # AIカメラ アプリケーションサーバー
+  ai-camera:
+    image: monocoto/stmlt-fcrcg:latest
+    volumes:
+      # アプリケーションの設定
+      - ./.streamlit/secrets.toml:/app/.streamlit/secrets.toml
+      # 顔認証する人の顔画像
+      - ./persons:/app/persons
+    ports: 
+      - 8501:8501 # Web ブラウザから "http://localhost:8501/" のアドレスでアプリケーションサーバーにアクセス出来る
